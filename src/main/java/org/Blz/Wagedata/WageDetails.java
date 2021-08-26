@@ -6,31 +6,47 @@ public class WageDetails
     public static final int IS_PART_TIME=1;
     public static final int EMP_WAGE_PER_HOUR=20;
     public static final int WORKING_DAYS=20;
+    public static int Totalwage=0;
+    public static int Total_Working_Hours_Till_Now=0;
+    public static void main(String[] args) {
+        int WorkHours = 0;
+        int Day=1;
+        while (Day <= WORKING_DAYS && Total_Working_Hours_Till_Now<= 100 ) {
 
-            public static void main( String[] args )
-    { int WorkHours=0;
-        int Day;
-        for (Day=1; Day < WORKING_DAYS; Day++) {
-            System.out.println("Day "+ Day);
+            System.out.println(" Wage for Day " + Day);
             double empCheck = (Math.floor(Math.random() * 10) % 3);
-            System.out.println("Wage For");
             switch ((int) empCheck) {
                 case IS_FULL_TIME: {
                     WorkHours = 8;
-                    System.out.println("Full time Emp is " + EMP_WAGE_PER_HOUR * WorkHours * WORKING_DAYS);
+                    int PerdaySalary = EMP_WAGE_PER_HOUR * WorkHours;
+                    Totalwage= Totalwage +PerdaySalary;
+                    Total_Working_Hours_Till_Now += WorkHours;
+                    System.out.println("Full time Emp is " + PerdaySalary);
+                    System.out.println("");
                 }
                 break;
                 case IS_PART_TIME: {
                     WorkHours = 4;
-                    System.out.println("Part time Emp is " + EMP_WAGE_PER_HOUR * WorkHours * WORKING_DAYS);
+                    int PerdaySalary = EMP_WAGE_PER_HOUR * WorkHours;
+                    Totalwage= Totalwage +PerdaySalary;
+                    Total_Working_Hours_Till_Now += WorkHours;
+
+                    System.out.println("Part time Emp is " + PerdaySalary);
+                    System.out.println("");
                 }
                 break;
                 default: {
                     WorkHours = 0;
-                    System.out.println("Absentee is " + EMP_WAGE_PER_HOUR * WorkHours * WORKING_DAYS);
+                    int PerdaySalary = EMP_WAGE_PER_HOUR * WorkHours;
+                    Totalwage= Totalwage +PerdaySalary;
+                    Total_Working_Hours_Till_Now += WorkHours;
+                    System.out.println("Absentee is " + PerdaySalary );
+                    System.out.println("");
                 }
             }
+            Day++;
         }
-
+        System.out.println( "Total worked hours are " + Total_Working_Hours_Till_Now);
+        System.out.println("Total wage is "+Totalwage);
     }
 }
